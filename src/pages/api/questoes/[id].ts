@@ -7,7 +7,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const selectedQuestion = questions.filter((question) => (question.id === selectedId));
 
   if (selectedQuestion.length === 1) {
-    res.status(200).json(selectedQuestion[0].toObject());
+    const question = selectedQuestion[0].shuffleAlternatives();
+    res.status(200).json(question.toObject());
   } else {
     res.status(204).send({});
   }

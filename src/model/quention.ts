@@ -1,3 +1,4 @@
+import { shuffle } from "@/functions/array";
 import AlternativeModel from "./alternative";
 
 export default class QuestionModel {
@@ -34,6 +35,11 @@ export default class QuestionModel {
       if (alternative.revealed === true) return true;
     }
     return false;
+  }
+
+  shuffleAlternatives() {
+    const scrambledAlternatives = shuffle(this.#alternatives);
+    return new QuestionModel(this.#id, this.#statementQuestion, scrambledAlternatives, this.#gotItRight);
   }
 
   toObject() {
