@@ -1,11 +1,13 @@
+import AlternativeModel from "./alternative";
+
 export default class QuestionModel {
   #id: number;
   #statementQuestion: string;
-  #alternatives: any[];
+  #alternatives: AlternativeModel[];
   #gotItRight: boolean;
   // #answered: boolean;
 
-  constructor(id: number, statementQuestion: string, alternatives: any[], gotItRight: boolean) {
+  constructor(id: number, statementQuestion: string, alternatives: AlternativeModel[], gotItRight = false) {
     this.#id = id;
     this.#statementQuestion = statementQuestion;
     this.#alternatives = alternatives;
@@ -29,7 +31,11 @@ export default class QuestionModel {
   }
 
   get answered() {
-    // fixme
+    
+    for(let alternative of this.#alternatives) {
+      if(alternative.revealed === true) return true;
+    }
+
     return false;
   }
 
