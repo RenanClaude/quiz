@@ -5,7 +5,6 @@ export default class QuestionModel {
   #statementQuestion: string;
   #alternatives: AlternativeModel[];
   #gotItRight: boolean;
-  // #answered: boolean;
 
   constructor(id: number, statementQuestion: string, alternatives: AlternativeModel[], gotItRight = false) {
     this.#id = id;
@@ -31,12 +30,19 @@ export default class QuestionModel {
   }
 
   get answered() {
-    
-    for(let alternative of this.#alternatives) {
-      if(alternative.revealed === true) return true;
+    for (let alternative of this.#alternatives) {
+      if (alternative.revealed === true) return true;
     }
-
     return false;
+  }
+
+  toObject() {
+    return {
+      id: this.#id,
+      statementQuestion: this.#statementQuestion,
+      alternatives: this.#alternatives.map((alternative) => (alternative.toObject())),
+      gotItRight: this.#gotItRight
+    }
   }
 
 }

@@ -9,6 +9,14 @@ export default class AlternativeModel {
     this.#revealed = revealed;
   }
 
+  static correct(value: string) {
+    return new AlternativeModel(value, true);
+  }
+
+  static incorrect(value: string) {
+    return new AlternativeModel(value, false);
+  }
+
   get value() {
     return this.#value;
   }
@@ -19,5 +27,13 @@ export default class AlternativeModel {
 
   get revealed() {
     return this.#revealed;
+  }
+
+  toObject() {
+    return {
+      value: this.#value,
+      correct: this.#correct,
+      revealed: this.#revealed,
+    }
   }
 }
