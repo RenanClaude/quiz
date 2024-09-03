@@ -5,14 +5,15 @@ interface AlternativeProps {
   alternative: AlternativeModel,
   index: number,
   letter: string,
-  letterBackGroundColor: string
+  letterBackGroundColor: string,
+  chosenAlternative: (index: number) => void
 }
 
 export default function Alternative(props: AlternativeProps) {
   const { alternative, index, letter, letterBackGroundColor } = props;
 
   return (
-    <div className={styes.alternative}>
+    <div className={styes.alternative} onClick={() => props.chosenAlternative(index)}>
 
       <div className={styes.alternativeContent}>
 

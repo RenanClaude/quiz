@@ -3,15 +3,32 @@ import styles from "../styles/Question.module.css";
 import Alternative from "./Alternative";
 import StatementQuestion from "./StatementQuestion";
 
+const letters = [
+  { value: "A", color: "#F2C866" },
+  { value: "B", color: "#F266BA" },
+  { value: "C", color: "#85D4F2" },
+  { value: "D", color: "#BCE596" }
+]
+
 interface QuestionProps {
-  question: QuestionModel
+  question: QuestionModel,
+  chosenAlternative: (index: number) => void
+
 }
 
 export default function Question(props: QuestionProps) {
   const { question } = props;
 
   function renderAlternatives() {
-    return question.alternatives.map((alternative, index) => (<Alternative alternative={alternative} index={index} letter="A" letterBackGroundColor="#F2C866" key={index} />))
+    return question.alternatives.map((alternative, i) => (
+      <Alternative
+      key={i}
+        alternative={alternative}
+        index={i} letter={letters[i].value}
+        letterBackGroundColor={letters[i].color}
+        chosenAlternative={props.chosenAlternative}
+      />
+    ))
   }
 
   return (
