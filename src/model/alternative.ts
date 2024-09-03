@@ -29,6 +29,10 @@ export default class AlternativeModel {
     return this.#revealed;
   }
 
+  reveal() {
+    return new AlternativeModel(this.#value, this.#correct, true)
+  }
+
   toObject() {
     return {
       value: this.#value,
