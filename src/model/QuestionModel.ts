@@ -1,5 +1,5 @@
 import { shuffle } from "@/functions/array";
-import AlternativeModel from "./alternative";
+import AlternativeModel from "./AlternativeModel";
 
 export default class QuestionModel {
   #id: number;
