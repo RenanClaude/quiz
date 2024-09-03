@@ -5,11 +5,11 @@ interface AlternativeProps {
   alternative: AlternativeModel,
   index: number,
   letter: string,
-  letterColor: string
+  letterBackGroundColor: string
 }
 
 export default function Alternative(props: AlternativeProps) {
-  const { alternative, index, letter, letterColor } = props;
+  const { alternative, index, letter, letterBackGroundColor } = props;
 
   return (
     <div className={styes.alternative}>
@@ -17,7 +17,7 @@ export default function Alternative(props: AlternativeProps) {
       <div className={styes.alternativeContent}>
 
         <div className={styes.front}>
-          <div className={styes.letter}>{letter}</div>
+          <div className={styes.letter} style={{backgroundColor: letterBackGroundColor}}>{letter}</div>
           <div className={styes.alternativeText}>{alternative.value}</div>
         </div>
 
