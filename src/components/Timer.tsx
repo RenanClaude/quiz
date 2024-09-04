@@ -14,8 +14,8 @@ export default function Timer(props: TimerProps) {
         size={120}
         isPlaying
         onComplete={props.timeOut}
-        colors={["#aeff83", "#ffdf70", "#ff8383", "#ff7070"]}
-        colorsTime={[30, 15, 7, 0]}
+        colors={["#aeff83", "#ffdf70", "#ff8383", "#ff6060"]}
+        colorsTime={[props.duration, props.duration*0.5, props.duration*0.25, 0]}
         isSmoothColorTransition={true}>
 
         {({ remainingTime }) => remainingTime}

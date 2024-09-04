@@ -13,12 +13,13 @@ const letters = [
 
 interface QuestionProps {
   question: QuestionModel,
+  timeToAnswer?: number,
   chosenAlternative: (index: number) => void
   timeOut: () => void
 }
 
 export default function Question(props: QuestionProps) {
-  const { question } = props;
+  const { question, timeToAnswer } = props;
 
   function renderAlternatives() {
     return question.alternatives.map((alternative, i) => (
@@ -35,7 +36,7 @@ export default function Question(props: QuestionProps) {
   return (
     <div className={styles.question}>
       <StatementQuestion text={question.statementQuestion} />
-      <Timer duration={30} timeOut={props.timeOut} />
+      <Timer duration={timeToAnswer ?? 30} timeOut={props.timeOut} />
 
       {renderAlternatives()}
     </div>
