@@ -44,3 +44,25 @@
   border-radius: 12px;
   padding: 15px;
 }
+
+.verse > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-radius: 12px;
+}
+
+.correct {
+  background-color: #2BAA6D;
+
+}
+
+.incorrect {
+  background-color: #E44A4C;
+}
+
+.correct .alternativeText, .incorrect .alternativeText {
+  font-size: 1.5rem;
+}

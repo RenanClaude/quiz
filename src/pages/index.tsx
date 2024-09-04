@@ -8,7 +8,7 @@ const questionMock = new QuestionModel(1, "Melhor cor?", [
   AlternativeModel.incorrect("Vermelho"),
   AlternativeModel.incorrect("Verde"),
   AlternativeModel.incorrect("Amarelo"),
-  AlternativeModel.incorrect("Azul")
+  AlternativeModel.correct("Azul")
 ]
 )
 
