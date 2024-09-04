@@ -36,12 +36,7 @@ export default function Alternative(props: AlternativeProps) {
               </div>)
             }
           </div>
-
-        )
-        }
-
-
-
+        )}
       </div>
 
     </div>

@@ -30,6 +30,10 @@ export default class QuestionModel {
     return this.#gotItRight;
   }
 
+  get notAnswered() {
+    return !this.answered;
+  }
+
   get answered() {
     for (let alternative of this.#alternatives) {
       if (alternative.revealed === true) return true;
@@ -38,7 +42,7 @@ export default class QuestionModel {
   }
 
   answerWith(index: number): QuestionModel {
-    const resultOfTheAnswer = this.#alternatives[index].correct;
+    const resultOfTheAnswer = this.#alternatives[index]?.correct;
 
     const answersRevealed = this.#alternatives.map((alternative, i) => {
       const selectedAlternative = i === index;

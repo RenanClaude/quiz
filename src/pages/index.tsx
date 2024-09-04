@@ -18,13 +18,21 @@ export default function Home() {
 
   function chosenAlternative(index: number) {
     setQuestion(question.answerWith(index))
-    console.log(index);
   }
 
+  function timeOut() {
+    if(question.notAnswered) {
+      setQuestion(question.answerWith(-1))
+    }
+  }
 
   return (
-    <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh"}}>
-      <Question question={question} chosenAlternative={chosenAlternative} />
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+      <Question
+        question={question}
+        chosenAlternative={chosenAlternative}
+        timeOut={timeOut}
+      />
     </div>
   );
 }

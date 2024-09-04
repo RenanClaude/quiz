@@ -2,6 +2,7 @@ import QuestionModel from "@/model/QuestionModel";
 import styles from "../styles/Question.module.css";
 import Alternative from "./Alternative";
 import StatementQuestion from "./StatementQuestion";
+import Timer from "./Timer";
 
 const letters = [
   { value: "A", color: "#F2C866" },
@@ -13,7 +14,7 @@ const letters = [
 interface QuestionProps {
   question: QuestionModel,
   chosenAlternative: (index: number) => void
-
+  timeOut: () => void
 }
 
 export default function Question(props: QuestionProps) {
@@ -22,7 +23,7 @@ export default function Question(props: QuestionProps) {
   function renderAlternatives() {
     return question.alternatives.map((alternative, i) => (
       <Alternative
-      key={i}
+        key={i}
         alternative={alternative}
         index={i} letter={letters[i].value}
         letterBackGroundColor={letters[i].color}
@@ -34,6 +35,8 @@ export default function Question(props: QuestionProps) {
   return (
     <div className={styles.question}>
       <StatementQuestion text={question.statementQuestion} />
+      <Timer duration={30} timeOut={props.timeOut} />
+
       {renderAlternatives()}
     </div>
   )
