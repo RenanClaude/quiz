@@ -1,7 +1,8 @@
+import Button from "@/components/Button";
 import Question from "@/components/Question";
 import AlternativeModel from "@/model/AlternativeModel";
 import QuestionModel from "@/model/QuestionModel";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const questionMock = new QuestionModel(1, "Melhor cor?", [
   AlternativeModel.incorrect("Vermelho"),
@@ -25,13 +26,14 @@ export default function Home() {
   }
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100vh" }}>
       <Question
         question={question}
         timeToAnswer={5}
         chosenAlternative={chosenAlternative}
         timeOut={timeOut}
       />
+      <Button text="Próxima questão" href="/resultado"/>
     </div>
   );
 }
