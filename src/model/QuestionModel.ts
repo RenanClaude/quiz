@@ -1,6 +1,13 @@
 import { shuffle } from "@/functions/array";
 import AlternativeModel from "./AlternativeModel";
 
+interface objToCreateQuestion {
+  id: number;
+  statementQuestion: string;
+  alternatives: AlternativeModel[];
+  gotItRight: boolean;
+}
+
 export default class QuestionModel {
   #id: number;
   #statementQuestion: string;
@@ -58,6 +65,11 @@ export default class QuestionModel {
     return new QuestionModel(this.#id, this.#statementQuestion, scrambledAlternatives, this.#gotItRight);
   }
 
+  static createFromAnObject(obj: objToCreateQuestion): QuestionModel {
+    const arrAlternatives = obj.alternatives.map((objAlternative) => (AlternativeModel.createFromAnObject(objAlternative))) 
+    return new QuestionModel(obj.id, obj.statementQuestion, arrAlternatives, obj.gotItRight);
+  }
+
   toObject() {
     return {
       id: this.#id,
@@ -65,7 +77,7 @@ export default class QuestionModel {
       answered: this.answered,
       gotItRight: this.#gotItRight,
       alternatives: this.#alternatives.map((alternative) => (alternative.toObject()))
-      
+
     }
   }
 

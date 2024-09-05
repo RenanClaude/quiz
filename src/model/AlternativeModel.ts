@@ -1,3 +1,9 @@
+interface objToCreateAlternative {
+  value: string;
+  correct: boolean;
+  revealed: boolean;
+}
+
 export default class AlternativeModel {
   #value: string;
   #correct: boolean;
@@ -31,6 +37,10 @@ export default class AlternativeModel {
 
   reveal() {
     return new AlternativeModel(this.#value, this.#correct, true)
+  }
+
+  static createFromAnObject(obj: objToCreateAlternative): AlternativeModel {
+    return new AlternativeModel(obj.value, obj.correct, obj.revealed);
   }
 
   toObject() {
