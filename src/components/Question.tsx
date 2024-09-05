@@ -24,7 +24,7 @@ export default function Question(props: QuestionProps) {
   function renderAlternatives() {
     return question.alternatives.map((alternative, i) => (
       <Alternative
-        key={i}
+        key={`${question.id}-${i}`}
         alternative={alternative}
         index={i} letter={letters[i].value}
         letterBackGroundColor={letters[i].color}
@@ -36,8 +36,7 @@ export default function Question(props: QuestionProps) {
   return (
     <div className={styles.question}>
       <StatementQuestion text={question.statementQuestion} />
-      <Timer duration={timeToAnswer ?? 30} timeOut={props.timeOut} />
-
+      <Timer duration={timeToAnswer ?? 30} timeOut={props.timeOut} key={question.id} />
       {renderAlternatives()}
     </div>
   )
