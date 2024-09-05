@@ -1,5 +1,4 @@
-import Button from "@/components/Button";
-import Question from "@/components/Question";
+import Questionnaire from "@/components/Questionnaire";
 import AlternativeModel from "@/model/AlternativeModel";
 import QuestionModel from "@/model/QuestionModel";
 import { useState } from "react";
@@ -15,25 +14,20 @@ const questionMock = new QuestionModel(1, "Melhor cor?", [
 export default function Home() {
   const [question, setQuestion] = useState(questionMock);
 
-  function chosenAlternative(index: number) {
-    setQuestion(question.answerWith(index))
+  function chosenAlternative(question: QuestionModel) {
+
   }
 
-  function timeOut() {
-    if (question.notAnswered) {
-      setQuestion(question.answerWith(-1))
-    }
+  function goToTheNextScenario() {
+
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-      <Question
-        question={question}
-        timeToAnswer={5}
-        chosenAlternative={chosenAlternative}
-        timeOut={timeOut}
+      <Questionnaire 
+      question={question}
+      // lastQuestion={true}
+      questionAnswered={chosenAlternative}
+      goToTheNextScenario={goToTheNextScenario}
       />
-      <Button text="Próxima questão" href="/resultado"/>
-    </div>
   );
 }

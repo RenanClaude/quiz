@@ -3,7 +3,7 @@ import styles from "../styles/Button.module.css"
 
 interface ButtonProps {
   text: string,
-  href: string,
+  href?: string,
   onClick: (e: any) => void
 }
 
