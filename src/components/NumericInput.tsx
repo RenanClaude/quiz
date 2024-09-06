@@ -9,7 +9,7 @@ interface NumericInputProps {
 
 export default function NumericImput(props: NumericInputProps) {
 
-  const decrement = () => props.onChange(props.value - 1);
+  const decrement = () => props.value === 1 ? null : props.onChange(props.value - 1);
   const increment = () => props.onChange(props.value + 1);
 
 

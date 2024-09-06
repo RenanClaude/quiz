@@ -13,8 +13,10 @@
   align-items: center;
   border-radius: 90px;
   font-size: 4rem;
+  border: solid 5px;
+
 }
 
 .text {
-  
+  font-weight: 500;
 }

@@ -8,6 +8,7 @@ export default function HomePage() {
   const [timeForEachQuestion, setTimeForEachQuestion] = useState<number>(30);
   const [numberOfQuestions, setNumberOfQuestions] = useState(1);
   const router = useRouter();
+  const minimumTime = timeForEachQuestion === 1 ? true : false;
 
   function play() {
     router.push({

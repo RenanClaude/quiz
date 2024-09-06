@@ -21,12 +21,10 @@ export default function Alternative(props: AlternativeProps) {
     <div className={styes.alternative} onClick={() => props.chosenAlternative(index)}>
 
       <div className={`${answerRevealed} ${styes.alternativeContent}`}>
-        {/* {!alternative.revealed ? ( */}
           <div className={styes.front}>
             <div className={styes.letter} style={{ backgroundColor: letterBackGroundColor }}>{letter}</div>
             <div className={styes.alternativeText}>{alternative.value}</div>
           </div>
-        {/* ) : ( */}
           <div className={styes.verse}>
             {alternative.correct ?
               (<div className={styes.correct}>
@@ -39,7 +37,6 @@ export default function Alternative(props: AlternativeProps) {
               </div>)
             }
           </div>
-        {/* )} */}
       </div>
 
     </div>

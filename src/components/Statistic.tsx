@@ -11,7 +11,7 @@ export default function Statistic(props: StatisticProps) {
   return (
     <div className={styles.statistic}>
 
-      <div className={styles.value} style={{ backgroundColor: props.backgroundColor ?? "#fdd60f", color: props.fontColor ?? "#333" }}>
+      <div className={styles.value} style={{ backgroundColor: props.backgroundColor ?? "#fdd60f", color: props.fontColor ?? "#003b55", fontWeight: 500 }}>
         {props.value}
       </div>
 

@@ -70,5 +70,8 @@ export default function Home() {
       questionAnswered={answerTheQuestion}
       goToTheNextScenario={goToTheNextScenario}
       time={time}
-    />) : <h1>Carregando...</h1>
+    />) :
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh" }}>
+      <h1>Carregando...</h1>
+    </div>
 }
