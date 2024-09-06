@@ -1,69 +1,29 @@
-import Questionnaire from "@/components/Questionnaire";
-import QuestionModel from "@/model/QuestionModel";
+import NumericImput from "@/components/NumericInput";
+import { useState } from "react";
+import styles from "../styles/HomePage.module.css";
+import Button from "@/components/Button";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
-const BASE_URL = "http://localhost:3000/api";
-
-
-export default function Home() {
-  const [question, setQuestion] = useState<QuestionModel>();
-  const [questionIds, setQuestionIds] = useState<number[]>([]);
-  const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState<number>(0);
+export default function HomePage() {
+  const [timeForEachQuestion, setTimeForEachQuestion] = useState(30);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(1);
   const router = useRouter();
 
-
-  async function loadQuestionIds() {
-    const res = await fetch(`${BASE_URL}/questionario`);
-    const resQuestionIds = await res.json();
-    setQuestionIds(resQuestionIds);
+  function play() {
+    router.push({ pathname:"/quiz", query: { time: timeForEachQuestion, questions: numberOfQuestions } });
   }
 
-  async function loadQuestion(id: number) {
-    const res = await fetch(`${BASE_URL}/questoes/${id}`);
-    const resQuestion = await res.json();
-    setQuestion(QuestionModel.createFromAnObject(resQuestion));
-  }
+  return (
+    <div className={styles.homePage}>
+      <h1 className={styles.title}>Quiz App</h1>
 
-  useEffect(() => {
-    loadQuestionIds();
-  }, []);
+      <div>
+        <NumericImput onChange={(time) => setTimeForEachQuestion(time)} text="Tempo para cada questão:" valueToShow={`${timeForEachQuestion}s`} value={timeForEachQuestion} />
+        <NumericImput onChange={(n) => setNumberOfQuestions(n)} text="Quantidade de questões:" value={numberOfQuestions} valueToShow={numberOfQuestions} />
+      </div>
 
-  useEffect(() => {
-    questionIds.length > 0 && loadQuestion(questionIds[0])
-  }, [questionIds]);
+      <Button text="Jogar!" href="/quiz" onClick={play}/>
 
-  function answerTheQuestion(question: QuestionModel) {
-    setQuestion(question);
-    const gotItRight = question.gotItRight;
-    setNumberOfCorrectAnswers(numberOfCorrectAnswers + (gotItRight ? 1 : 0));
-  }
-
-  function getIdOfTheNextQuestion() {
-    if (question) {
-      const indexOfTheNextQuestion = questionIds.indexOf(question.id) + 1;
-      return questionIds[indexOfTheNextQuestion];
-    }
-  }
-
-  function goToTheNextQuestion(idOfTheNextQuestion: number) {
-    loadQuestion(idOfTheNextQuestion);
-  }
-
-  function finish() {
-    router.push({ pathname:"/resultado", query: { total: questionIds.length, corrects: numberOfCorrectAnswers } });
-  }
-
-  function goToTheNextScenario() {
-    const idOfTheNextQuestion = getIdOfTheNextQuestion();
-    idOfTheNextQuestion ? goToTheNextQuestion(idOfTheNextQuestion) : finish();
-  }
-
-  return question ? (
-    <Questionnaire
-      question={question}
-      lastQuestion={getIdOfTheNextQuestion() === undefined}
-      questionAnswered={answerTheQuestion}
-      goToTheNextScenario={goToTheNextScenario}
-    />) : "Carregando..."
+    </div>
+  )
 }

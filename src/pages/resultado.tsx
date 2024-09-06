@@ -17,11 +17,11 @@ export default function Result() {
     <div className={styles.result}>
       <h1>Resultado final</h1>
       <div style={{display: "flex"}}>
-        <Statistic text="Questões respondidas" value={total} />
-        <Statistic text="Questões acertadas" value={numberOfCorrectAnswers} backgroundColor="#9cd2a4"/>
-        <Statistic text="Aproveitaento" value={`${hitPercentage}%`} backgroundColor="#de6a33"/>
+        <Statistic text="Respondidas" value={total} />
+        <Statistic text="Acertos" value={numberOfCorrectAnswers} backgroundColor="#9cd2a4"/>
+        <Statistic text="Aproveitamento" value={`${hitPercentage}%`} backgroundColor="#de6a33"/>
       </div>
-      <Button href="/" text="Jogar novamente!"/>
+      <Button href="/quiz" text="Jogar novamente!"/>
     </div>
   )
 }

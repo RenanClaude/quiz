@@ -1,0 +1,22 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  font-size: 6rem;
+  border: solid 5px;
+  margin: 35px;
+  padding: 30px;
+  background-color: rgb(127, 0, 211);
+  border-radius: 20px;
+  text-shadow: 1cap;
+}
+
+.homePage > button {
+  height: 100px;
+  width: 100px;
+}
