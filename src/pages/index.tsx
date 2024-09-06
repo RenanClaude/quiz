@@ -5,12 +5,15 @@ import Button from "@/components/Button";
 import { useRouter } from "next/router";
 
 export default function HomePage() {
-  const [timeForEachQuestion, setTimeForEachQuestion] = useState(30);
+  const [timeForEachQuestion, setTimeForEachQuestion] = useState<number>(30);
   const [numberOfQuestions, setNumberOfQuestions] = useState(1);
   const router = useRouter();
 
   function play() {
-    router.push({ pathname:"/quiz", query: { time: timeForEachQuestion, questions: numberOfQuestions } });
+    router.push({
+      pathname: "/quiz",
+      query: { time: timeForEachQuestion, totalQuestions: numberOfQuestions },
+    });
   }
 
   return (
@@ -22,7 +25,7 @@ export default function HomePage() {
         <NumericImput onChange={(n) => setNumberOfQuestions(n)} text="Quantidade de questões:" value={numberOfQuestions} valueToShow={numberOfQuestions} />
       </div>
 
-      <Button text="Jogar!" href="/quiz" onClick={play}/>
+      <button onClick={play}>Jogar!</button>
 
     </div>
   )

@@ -16,12 +16,12 @@ export default function Result() {
   return (
     <div className={styles.result}>
       <h1>Resultado final</h1>
-      <div style={{display: "flex"}}>
+      <div style={{display: "flex", justifyContent: "space-between"}}>
         <Statistic text="Respondidas" value={total} />
         <Statistic text="Acertos" value={numberOfCorrectAnswers} backgroundColor="#9cd2a4"/>
         <Statistic text="Aproveitamento" value={`${hitPercentage}%`} backgroundColor="#de6a33"/>
       </div>
-      <Button href="/quiz" text="Jogar novamente!"/>
+      <Button href="/" text="Jogar novamente!"/>
     </div>
   )
 }

@@ -11,11 +11,14 @@ export default function Home() {
   const [questionIds, setQuestionIds] = useState<number[]>([]);
   const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState<number>(0);
   const router = useRouter();
+  const time = Number(router.query.time);
+  const totalQuestions = Number(router.query.totalQuestions);
 
 
-  async function loadQuestionIds() {
+  async function loadQuestionIds(totalQuestions: number) {
     const res = await fetch(`${BASE_URL}/questionario`);
-    const resQuestionIds = await res.json();
+    const resQuestionIds: Array<number> = await res.json();
+    resQuestionIds.length = totalQuestions;
     setQuestionIds(resQuestionIds);
   }
 
@@ -26,7 +29,8 @@ export default function Home() {
   }
 
   useEffect(() => {
-    loadQuestionIds();
+    console.log(time)
+    loadQuestionIds(totalQuestions);
   }, []);
 
   useEffect(() => {
@@ -51,7 +55,7 @@ export default function Home() {
   }
 
   function finish() {
-    router.push({ pathname:"/resultado", query: { total: questionIds.length, corrects: numberOfCorrectAnswers } });
+    router.push({ pathname: "/resultado", query: { total: questionIds.length, corrects: numberOfCorrectAnswers } });
   }
 
   function goToTheNextScenario() {
@@ -65,5 +69,6 @@ export default function Home() {
       lastQuestion={getIdOfTheNextQuestion() === undefined}
       questionAnswered={answerTheQuestion}
       goToTheNextScenario={goToTheNextScenario}
-    />) : "Carregando..."
+      time={time}
+    />) : <h1>Carregando...</h1>
 }

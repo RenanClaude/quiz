@@ -7,7 +7,8 @@ interface QuestionnaireProps {
   question: QuestionModel,
   lastQuestion: boolean,
   questionAnswered: (question: QuestionModel) => void,
-  goToTheNextScenario: () => void
+  goToTheNextScenario: () => void,
+  time: number,
 }
 
 export default function Questionnaire(props: QuestionnaireProps) {
@@ -21,7 +22,7 @@ export default function Questionnaire(props: QuestionnaireProps) {
   return (
     <div className={styles.questionnaire}>
       {props.question ?
-        <Question question={props.question} timeToAnswer={10} chosenAlternative={chosenAlternative} timeOut={props.goToTheNextScenario} /> :
+        <Question question={props.question} timeToAnswer={props.time} chosenAlternative={chosenAlternative} timeOut={props.goToTheNextScenario} /> :
         "Carregando..."
       }
       <Button onClick={props.goToTheNextScenario} text={props.lastQuestion ? "Finalizar!" : "Próxima questão"} />
