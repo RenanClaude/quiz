@@ -59,12 +59,11 @@ export default function Home() {
     idOfTheNextQuestion ? goToTheNextQuestion(idOfTheNextQuestion) : finish();
   }
 
-  return (
+  return question ? (
     <Questionnaire
       question={question}
       lastQuestion={getIdOfTheNextQuestion() === undefined}
       questionAnswered={answerTheQuestion}
       goToTheNextScenario={goToTheNextScenario}
-    />
-  );
+    />) : "Carregando..."
 }

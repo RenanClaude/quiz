@@ -4,12 +4,19 @@
   margin: 10px;
   width: 80%;
   min-width: 500px;
+  perspective: 1000px;
 }
 
 .alternativeContent {
   position: relative;
   display: flex;
   flex: 1;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.answerRevealed.alternativeContent {
+  transform: rotateY(180deg);
 }
 
 .letter {
@@ -35,6 +42,8 @@
   height: 100%;
   width: 100%;
   position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .front {
@@ -43,6 +52,10 @@
   color: black;
   border-radius: 12px;
   padding: 15px;
+}
+
+.verse {
+  transform: rotateY(180deg);
 }
 
 .verse > div {

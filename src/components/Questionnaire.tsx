@@ -21,7 +21,7 @@ export default function Questionnaire(props: QuestionnaireProps) {
   return (
     <div className={styles.questionnaire}>
       {props.question ?
-        <Question question={props.question} timeToAnswer={8} chosenAlternative={chosenAlternative} timeOut={props.goToTheNextScenario} /> :
+        <Question question={props.question} timeToAnswer={10} chosenAlternative={chosenAlternative} timeOut={props.goToTheNextScenario} /> :
         "Carregando..."
       }
       <Button onClick={props.goToTheNextScenario} text={props.lastQuestion ? "Finalizar!" : "Próxima questão"} />
