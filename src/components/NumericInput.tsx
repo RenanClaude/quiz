@@ -3,14 +3,15 @@ import styles from "../styles/NumericInput.module.css";;
 interface NumericInputProps {
   text: string,
   valueToShow: any,
-  value: number
+  value: number,
+  maxNumOfQuestions: number,
   onChange: (newNumber: number) => void
 }
 
 export default function NumericImput(props: NumericInputProps) {
 
   const decrement = () => props.value === 1 ? null : props.onChange(props.value - 1);
-  const increment = () => props.onChange(props.value + 1);
+  const increment = () => props.maxNumOfQuestions === props.value ? null : props.onChange(props.value + 1);
 
 
   return (

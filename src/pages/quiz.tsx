@@ -29,7 +29,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log(time)
     loadQuestionIds(totalQuestions);
   }, []);
 
