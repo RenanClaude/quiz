@@ -8,7 +8,7 @@ export default function HomePage() {
   const [numberOfQuestions, setNumberOfQuestions] = useState(1);
   const [maxNumOfQuestions, setMaxNumOfQuestions] = useState(1);
   const router = useRouter();
-  const BASE_URL = "http://localhost:3000/api";
+  const BASE_URL = "https://quiz-app-sepia-psi.vercel.app/api";
 
   useEffect(() => {
     loadAllQuestionIds();
