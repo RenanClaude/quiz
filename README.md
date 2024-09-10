@@ -1,40 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Quiz App
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/RenanClaude/quiz-app/blob/main/LICENSE) 
 
-## Getting Started
+# Sobre o projeto
 
-First, run the development server:
+https://quiz-app-sepia-psi.vercel.app/
+
+Quiz App é uma aplicação Front-End web se utilizando de tecnologias como React e Next.
+
+A aplicação consiste em um jogo de perguntas que devem ser respondidas em um determinado tempo definido pelo jogador. As perguntas utilizadas foram retiradas do antigo programa de televisão chamado Show do Milhão.
+
+## Layout web
+![Homepage](https://github.com/RenanClaude/assets/blob/main/quiz-app-homepage.png)
+
+![Question](https://github.com/RenanClaude/assets/blob/main/quiz-app-question.png)
+
+![Correct question](https://github.com/RenanClaude/assets/blob/main/quiz-app-hit.png)
+
+![Incorrect question](https://github.com/RenanClaude/assets/blob/main/quiz-app-incorrect.png)
+
+![Result](https://github.com/RenanClaude/assets/blob/main/quiz-app-result.png)
+
+# Tecnologias utilizadas
+## Front end
+- HTML / CSS
+- JavaScript / TypeScript
+- React
+- Next.js
+
+# Como executar o projeto
+
+## Front end web
+Pré-requisitos: npm
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# clonar repositório
+git clone https://github.com/RenanClaude/quiz-app.git
+
+# entrar na pasta do projeto front end web
+cd front-web
+
+# instalar dependências
+npm install
+
+# executar o projeto
+npm run dev ou npm run build + npm start
 ```
+Abra [http://localhost:3000](http://localhost:3000) com o seu navegador para ver o resultado.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Autor
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Renan Claude
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+https://www.linkedin.com/in/renan-claude-dev/
